@@ -1,0 +1,202 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+{%extends "homeProfessores.html" %}
+{%block igreja1%}{{igreja.nomeDaIgreja}}{%endblock igreja1%}
+{%block igreja2%}{{igreja.nomeDaIgreja}}{%endblock igreja2%}
+{% block ano %} {{ano}}{% endblock ano %}
+{%block igreja3%}{{igreja.nomeDaIgreja}} {%endblock igreja3%}
+{% block desenvolvedores %} {{configuracoes.desenvolvedores}}{% endblock desenvolvedores %}
+{%block usuario%} {{request.session.usuario_activo}} {% endblock usuario %}
+{% block extra_head %}
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/modules/data.js"></script>
+  <script src="http://code.highcharts.com/modules/drilldown.js"></script>
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+<div class="col-sm-9" >
+  <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs col-sm-10" role="tablist">
+    <li role="presentation" class="active" style="font-size:12px; "><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Informação&Estatísticas</a></li>
+</ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content col-sm-10" style = "background-color: white; box-shadow: 2px 10px 10px 3px grey;font-size=12px; margin-top:10px;">
+
+<form class="form-horizontal" role="form" method="GET">
+    <div role="tabpanel" class="tab-pane fade in active" id="CONTEINER" style="font-size:12px; margin-top: 10px;">
+        <div class="col-sm-12">              
+            <div class="col-sm-5">
+                {% if graph != '' %}<mds src="{{ graph }}" alt="some_text"> {% endif %}
+                {%for escola in escola %}
+            <h4> <p> {{escola.Nome}} </p> </h4>
+                    <p> <b>Endereço:     </b>{{escola.Endereco}} </p>
+                    <p> <b>Caixa Postal:</b> {{escola.Fax}} </p>
+                    <p> <b>Telefone:     </b>{{escola.Telefone}} </p>
+                </td>
+                {% endfor %}
+            </div>
+        </div>
+
+                  
+</form>
+
+        <legend>Sistema de gestão acadêmica</legend> 
+        <div class="carousel-inner">
+            <div class="item active" >
+                <img src="http://i58.tinypic.com/jq3ok9.jpg"class="fill img-hover" style="max-width:auto; height:60%;">
+            </div>
+        </div>
+
+
+        </fieldset>
+
+
+        </div>
+    
+       
+        </div>
+
+    
+    <div role="tabpanel" class="tab-pane fade in active" id="Graficos" style="font-size:12px; margin-top: 10px;">
+     
+  
+    </div>
+ 
+    </div>
+ 
+  </div>
+  </div> 
+
+<script type="text/javascript">
+//Membros
+"""$(function () {
+    $('#home4').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Estatística de membros no ano {{ano}}'
+        },
+        subtitle: {
+            text: 'Passe o cursor em cima do mês para mais informações'
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total de Membros'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Total de membros: <b>{point.y:.1f}</b>'
+        },
+
+ //{% for totalmembros in totalmembros%}
+                   
+                   // {% if totalmembros.dataMembro.month == 10 %}
+                       // mes='Outubro'
+                    //{% endif %}
+
+//{% endfor %}
+ 
+
+
+
+        series: [{
+            name: 'Membros',
+            data: [
+                    {% for totalmembros in totalmembros%}
+                    {% if totalmembros.dataMembro.month == 1 %}
+                                        ['Janeiro', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 2 %}
+                                        ['Fevereiro', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 3 %}
+                                        ['Março', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 4 %}
+                                        ['Abril', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 5 %}
+                                        ['Maio', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 6 %}
+                                        ['Junho', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 7 %}
+                                        ['Julho', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 8 %}
+                                        ['Agosto', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 9 %}
+                                        ['Setembro', {{totalmembros.totalMembros}}],
+                         {% endif %}
+            
+                        {% if totalmembros.dataMembro.month == 10 %}
+                                        ['Outubro', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 11 %}
+                                        ['Novembro', {{totalmembros.totalMembros}}],
+                         {% endif %}
+                         {% if totalmembros.dataMembro.month == 12 %}
+                                        ['Dezembro', {{totalmembros.totalMembros}}],
+                         {% endif %}
+
+ 
+
+                    {% endfor %}
+
+
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
+});"""
+
+</script>
+
+<style type="text/css">
+body {
+background-image:url('http://i58.tinypic.com/jq3ok9.jpg');
+background-repeat:no-repeat;
+background-size:100%;
+}
+#container {
+ 
+}
+</style>
+
+{% endblock content %}

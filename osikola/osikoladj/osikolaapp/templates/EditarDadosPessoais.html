@@ -1,0 +1,369 @@
+{% extends "homeProfessores.html" %}
+<!-- Custom styles for this template -->
+{%block igreja1%}{{igreja.nomeDaIgreja}}{%endblock igreja1%}
+{%block igreja2%}{{igreja.nomeDaIgreja}}{%endblock igreja2%}
+{% block ano %} {{ano}}{% endblock ano %}
+{%block igreja3%}{{igreja.nomeDaIgreja}} {%endblock igreja3%}
+{% block desenvolvedores %} {{configuracoes.desenvolvedores}}{% endblock desenvolvedores %}
+{% block content %}
+
+<div class="col-sm-9" >
+  <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs col-sm-10" role="tablist">
+    <li role="presentation" class="active" style="font-size:12px; "><a href="#editarMembro" aria-controls="editarMembro" role="tab" data-toggle="tab">Editar Membro</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content col-sm-10" style = "background-color: white; box-shadow: 2px 10px 10px 3px grey;">
+    <div role="tabpanel" class="tab-pane fade in active" id="editarMembro" style="font-size:12px;  margin-top: 10px;">
+  <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    {{form.errors}}
+    <div class="form-group">
+      <p><p>
+ <fieldset>
+<legend>Dados Pessoais</legend> 
+      <label class="control-label col-sm-2" for="email">Nome:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Nome" name = "Nome"placeholder="Nome" value="{%for resultado in resultado %}{{resultado.Nome}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">Pseodonimo:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Pseodonimo" name = "Pseodonimo"placeholder="Pseodonimo" value="{%for resultado in resultado %}{{resultado.Pseodonimo}}{% endfor %}">
+      </div>
+
+
+ <label class="control-label col-sm-2" for="pwd">Sexo:</label>
+      <div class="col-sm-10">          
+       <select class="form-control input-sm" id="Sexo" name = "Sexo">
+        <option></option>
+        <option>M</option>
+        <option>F</option>
+      </select>
+      </div>
+
+
+ <label class="control-label col-sm-2" for="email">DataNascimento:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataNascimento" name = "DataNascimento"placeholder="" value="{%for resultado in resultado %}{{resultado.DataNascimento}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">Idade:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Idade" name = "Idade"placeholder="" value="{%for resultado in resultado %}{{resultado.Idade}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodComuna:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodComuna" name = "CodComuna"placeholder="" value="{%for resultado in resultado %}{{resultado.CodComuna}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodPai:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodPai" name = "CodPai"placeholder="" value="{%for resultado in resultado %}{{resultado.CodPai}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodMae:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodMae" name = "CodMae"placeholder="" value="{%for resultado in resultado %}{{resultado.CodMae}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">IdIdentificacao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="IdIdentificacao" name = "IdIdentificacao"placeholder="" value="{%for resultado in resultado %}{{resultado.IdIdentificacao}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodEstadoCivil:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodEstadoCivil" name = "CodEstadoCivil"placeholder="" value="{%for resultado in resultado %}{{resultado.CodEstadoCivil}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">NomeConjuge:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="NomeConjuge" name = "NomeConjuge"placeholder="" value="{%for resultado in resultado %}{{resultado.NomeConjuge}}{% endfor %}">
+      </div>
+<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+</fieldset>
+
+
+ <fieldset>
+<legend>Dados de contacto</legend> 
+
+ <label class="control-label col-sm-2" for="email">Residencia:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Residencia" name = "Residencia"placeholder="" value="{%for resultado in resultado %}{{resultado.Residencia}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">NumeroCasa:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Numerocasa" name = "Numerocasa"placeholder="Pseodonimo" value="{%for resultado in resultado %}{{resultado.Numerocasa}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">Telefone:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Telefone" name = "Telefone"placeholder="" value="{%for resultado in resultado %}{{resultado.Telefone}}{% endfor %}">
+      </div>
+
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+</fieldset>
+
+
+ <fieldset>
+<legend>Dados bancários</legend> 
+
+
+ <label class="control-label col-sm-2" for="email">Numerodeconta:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Numerodeconta" name = "Numerodeconta"placeholder="" value="{%for resultado in resultado %}{{resultado.Numerodeconta}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">IDEntidadeBancaria:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="IDEntidadeBancaria" name = "IDEntidadeBancaria"placeholder="" value="{%for resultado in resultado %}{{resultado.IDEntidadeBancaria}}{% endfor %}">
+      </div>
+<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+</fieldset>
+
+
+
+ <fieldset>
+<legend>Outros dados</legend> 
+
+
+ <label class="control-label col-sm-2" for="email">NumeroFilhos:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="NumeroFilhos" name = "NumeroFilhos"placeholder="" value="{%for resultado in resultado %}{{resultado.NumeroFilhos}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodGrupoSanguineo:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodGrupoSanguineo" name = "CodGrupoSanguineo"placeholder="" value="{%for resultado in resultado %}{{resultado.CodGrupoSanguineo}}{% endfor %}">
+      </div>
+
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+ </fieldset>
+
+
+
+ <fieldset>
+<legend>Dados profissionais</legend> 
+
+ <label class="control-label col-sm-2" for="email">CodProfissao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodProfissao" name = "CodProfissao"placeholder="" value="{%for resultado in resultado %}{{resultado.CodProfissao}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodCarreira:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodCarreira" name = "CodCarreira"placeholder="" value="{%for resultado in resultado %}{{resultado.CodCarreira}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodCategoria:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodCategoria" name = "CodCategoria"placeholder="" value="{%for resultado in resultado %}{{resultado.CodCategoria}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">DataInicioCategoria:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataInicioCategoria" name = "DataInicioCategoria"placeholder="" value="{%for resultado in resultado %}{{resultado.DataInicioCategoria}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">NumeroAgente:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="NumeroAgente" name = "NumeroAgente"placeholder="" value="{%for resultado in resultado %}{{resultado.NumeroAgente}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">NumeroCIF:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="NumeroCIF" name = "NumeroCIF"placeholder="" value="{%for resultado in resultado %}{{resultado.NumeroCIF}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">SalarioBase:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="SalarioBase" name = "SalarioBase"placeholder="" value="{%for resultado in resultado %}{{resultado.SalarioBase}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">DataIngressoFuncaoPublica:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataIngressoFuncaoPublica" name = "DataIngressoFuncaoPublica"placeholder="" value="{%for resultado in resultado %}{{resultado.DataIngressoFuncaoPublica}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">DataInicioFuncaoNaEscola:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataInicioFuncaoNaEscola" name = "DataInicioFuncaoNaEscola"placeholder="" value="{%for resultado in resultado %}{{resultado.DataInicioFuncaoNaEscola}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">CodFuncao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodFuncao" name = "CodFuncao"placeholder="" value="{%for resultado in resultado %}{{resultado.CodFuncao}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">DataNomeacao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataNomeacao" name = "DataNomeacao"placeholder="" value="{%for resultado in resultado %}{{resultado.DataNomeacao}}{% endfor %}">
+      </div>
+
+ <label class="control-label col-sm-2" for="email">NumeroDRN:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="NumeroDRN" name = "NumeroDRN"placeholder="" value="{%for resultado in resultado %}{{resultado.NumeroDRN}}{% endfor %}">
+      </div>
+
+<label class="control-label col-sm-2" for="email">Serie:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Serie" name = "Serie"placeholder="" value="{%for resultado in resultado %}{{resultado.Serie}}{% endfor %}">
+      </div>
+<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+ </fieldset>
+
+ <fieldset>
+<legend>Dados de transferência</legend> 
+
+<label class="control-label col-sm-2" for="email">Transferido:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Transferido" name = "Transferido"placeholder="" value="{%for resultado in resultado %}{{resultado.Transferido}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">CodLocalServicoAnterior:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodLocalServicoAnterior" name = "CodLocalServicoAnterior"placeholder="" value="{%for resultado in resultado %}{{resultado.CodLocalServicoAnterior}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">DataTransferencia:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataTransferencia" name = "DataTransferencia"placeholder="" value="{%for resultado in resultado %}{{resultado.DataTransferencia}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">PorOrdemde:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="PorOrdemde" name = "PorOrdemde"placeholder="" value="{%for resultado in resultado %}{{resultado.PorOrdemde}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">OutrosLocais:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="OutrosLocais" name = "OutrosLocais"placeholder="" value="{%for resultado in resultado %}{{resultado.OutrosLocais}}{% endfor %}">
+      </div>
+
+<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+ </fieldset>
+ <fieldset>
+<legend>Serviço militar</legend> 
+<label class="control-label col-sm-2" for="email">ServicoMilitar:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="ServicoMilitar" name = "ServicoMilitar"placeholder="" value="{%for resultado in resultado %}{{resultado.ServicoMilitar}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">DataIncorporacao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataIncorporacao" name = "DataIncorporacao"placeholder="" value="{%for resultado in resultado %}{{resultado.DataIncorporacao}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">DataDesmobilizacao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="DataDesmobilizacao" name = "DataDesmobilizacao"placeholder="" value="{%for resultado in resultado %}{{resultado.DataDesmobilizacao}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">NumeroDocumento:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="NumeroDocumento" name = "NumeroDocumento"placeholder="" value="{%for resultado in resultado %}{{resultado.NumeroDocumento}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">Codtalao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Codtalao" name = "Codtalao"placeholder="" value="{%for resultado in resultado %}{{resultado.Codtalao}}{% endfor %}">
+      </div>
+<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+</fieldset>
+ <fieldset>
+<legend>Habilitações literárias</legend> 
+<label class="control-label col-sm-2" for="email">CodHabilitacoesLiterarias:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodHabilitacoesLiterarias" name = "CodHabilitacoesLiterarias"placeholder="" value="{%for resultado in resultado %}{{resultado.CodHabilitacoesLiterarias}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">CodAnoConclusao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodAnoConclusao" name = "CodAnoConclusao"placeholder="" value="{%for resultado in resultado %}{{resultado.CodAnoConclusao}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">CodInstituicao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodInstituicao" name = "CodInstituicao"placeholder="" value="{%for resultado in resultado %}{{resultado.CodInstituicao}}{% endfor %}">
+      </div>
+<label class="control-label col-sm-2" for="email">CodEspecialidade:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodEspecialidade" name = "CodEspecialidade"placeholder="" value="{%for resultado in resultado %}{{resultado.CodEspecialidade}}{% endfor %}">
+      </div>
+<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+</fieldset>
+ <fieldset>
+<legend>Habilitações profissionais</legend> 
+<label class="control-label col-sm-2" for="email">CodHabilitacoesProfissionais:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodHabilitacoesProfissionais" name = "CodHabilitacoesProfissionais"placeholder="" value="{%for resultado in resultado %}{{resultado.CodHabilitacoesProfissionais}}{% endfor %}">
+      </div>
+      <label class="control-label col-sm-2" for="email">CodAnoConclusao2:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodAnoConclusao2" name = "CodAnoConclusao2"placeholder="" value="{%for resultado in resultado %}{{resultado.CodAnoConclusao2}}{% endfor %}">
+      </div>
+      <label class="control-label col-sm-2" for="email">CodInstituicao:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="CodInstituicao2" name = "CodInstituicao2"placeholder="" value="{%for resultado in resultado %}{{resultado.CodInstituicao2}}{% endfor %}">
+      </div>
+      <label class="control-label col-sm-2" for="email">ExperienciaPratica:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="ExperienciaPratica" name = "ExperienciaPratica"placeholder="" value="{%for resultado in resultado %}{{resultado.ExperienciaPratica}}{% endfor %}">
+      </div>
+      <label class="control-label col-sm-2" for="email">Observacoes:</label>
+     <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Pseodonimo" name = "Pseodonimo"placeholder="Pseodonimo" value="{%for resultado in resultado %}{{resultado.Pseodonimo}}{% endfor %}">
+      </div>
+
+
+
+
+      
+      <label class="control-label col-sm-2" for="email">{{form.foto.label_tag}}</label>
+     <div class="col-sm-9"> 
+     {{form.foto.errors}}    
+     {{form.foto}}
+     </div>
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Gravar</button>
+      </div>
+
+
+    </div>
+
+  </form>
+</div>
+</div>
+</div>
+</div>
+<style type="text/css">
+    .form-horizontal{
+
+      background-color: white;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      }
+    .col-sm-9{
+      margin-bottom: 6px;
+    }
+    .control-label{
+      font-size: 10px;
+    }
+   .form-control{
+      font-size: 12px;
+    }
+   
+  </style>
+{% endblock content%}

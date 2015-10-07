@@ -1,0 +1,66 @@
+.cabecalho{
+	margin-top: -2%;
+	margin-right: 0%;
+}
+
+
+.active a{
+            background-color: #29292A;
+            color: white;
+            color: #0E73F7;
+          }
+body {
+          font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-size: 10px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+      }
+
+.content{
+            margin-top: 7%;
+            margin-left: 22%;
+            margin-right:15%;
+            font-size: 12px;
+            /*box-shadow: 10px;*/
+            border-style: groove;
+            padding-left: 10px;
+            padding-top: 10px;
+            box-shadow: 10px 10px 5px grey;
+          }
+ .col-sm-3 {
+            margin-top: 5%;
+            margin-left: 4%;
+            border-style: groove; 
+            box-shadow: 10px 10px 5px grey;
+            font-size: 10px;
+          }
+.sidebar{
+            margin-top: 5%;
+            margin-left: 4%;
+            border-style: groove; 
+          }
+
+.col-md-2{
+            margin-top: 5%;
+            margin-left: 4%;
+            border-style: groove;
+            font-size: 10px;
+
+          }
+.nav-sidebar{
+            width: 117%;
+            margin-left: -9%;
+          }
+.foot{
+            border-top: groove;
+            margin-top: 17%;
+            margin-left: 4%;
+            margin-right: 15%;
+            font-size: 10px;
+
+          }
+
+.Principal{
+	background-color:blue;
+}

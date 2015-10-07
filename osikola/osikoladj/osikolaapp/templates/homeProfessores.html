@@ -1,0 +1,159 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="" href="#">
+
+    <title>{%block igreja%}{{resultado.nomeDaIgreja}}{%endblock igreja%}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+
+
+    	
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <font color='white' size='4' style="margin-left:7%">Olá: {%for professor in professor%}
+            {{professor.Nome}}
+            {%endfor%}</font>
+          <ul class="nav navbar-nav navbar-right">
+            request.session.keys()
+            {%block usuario%}<li><b></b></li>{%endblock%}
+           
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="/admin">Admin</a></li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+          
+        <div style="margin-top:70px; padding-left:auto; padding-right:auto; margin-left:auto; margin-right:auto; width:85%">
+        <div class="col-sm-3">
+          <div class="list-group">
+            <a href="/professores" class="list-group-item active"><b>Osikola</b></a>
+            <div class="list-group-item" style="background-color:#E6E6E6;"><b>Dados pessoais e Segurança</b></div>
+            <a href="/editar/dadospessoais" class="list-group-item">Editar dados pessoais</a>
+            <a href="/editar/dadosdeacesso" class="list-group-item">Editar dados de acesso</a>
+            
+            <div class="list-group-item" style="background-color:#E6E6E6;"><b>Gestão acadêmica</b></div>
+            <a href="/gestao/financas/projetos" class="list-group-item">Lançamento de notas</a>
+            <a href="/gestao/financas/dizimos" class="list-group-item">Edição de notas</a>
+            <a href="/gestao/financas/contribuicao" class="list-group-item">Lançamento de faltas</a>
+            <a href="/gestao/financas/ofertas" class="list-group-item">Edição de faltas</a>
+            <a href="/gestao/financas/ofertas/pesquisar" class="list-group-item">Visualizar pautas</a>
+            <a href="/gestao/membro/pesquisar" class="list-group-item">Visualizar faltas</a>
+            <a href="/gestao/financas/pesquisar/documento" class="list-group-item">Imprimir documentos</a>
+            <a href="/gestao/financas/pesquisar/documento" class="list-group-item">Enviar mensagem a turma</a>
+
+            
+            
+            <div class="list-group-item" style="background-color:#E6E6E6;"><b>Actividades</b></div>
+            <a href="/gestao/rh/funcionario" class="list-group-item">Criar grupo de trabalho</a>
+            <a href="/gestao/rh/funcionario/salario/inserir" class="list-group-item">Editar grupo de trabalho</a>
+            <a href="/gestao/rh/funcionario/pesquisar" class="list-group-item">Ver grupo de trabalhos</a>
+             <a href="/" class="list-group-item">Imprimir grupos de trabalho</a>            
+          </div>
+          </div>
+          <div class="col">
+            {%block content%}
+            {%endblock content%}       
+          </div>
+        </div>
+      </div>
+    </div>
+
+<hr class="featurette-divider">
+
+
+    <footer>
+        <p class="pull-right"><a href="#">Voltar ao topo</a></p>
+        <p>&copy;{% block ano %} {{ano}}{% endblock ano %} {% block igreja3 %}{{igreja.nomeDaIgreja}}{% endblock igreja3 %} &middot; <a href="#">Privado</a> &middot; <a href="#">Termos</a></p>
+        <p>Desenvolvedor  &middot; <a href="">{% block desenvolvedores %}{{configuracoes.desenvolvedores}}{% endblock desenvolvedores %}</a></p>
+      </footer>
+
+    <style type="text/css">
+    .list-group{
+      box-shadow: 5px 10px 10px 3px grey;
+
+
+    }
+    body{
+      font-size: 12px;
+      font-family: sans-serif;
+    }
+    .list-group-item{
+      height: 29px;
+    }
+    .footer{
+      padding-top: 10px;
+      text-align: justify;
+      margin-left: 10px;
+    }
+
+    </style>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+
+
+
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/css/bootstrap.min.css"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+     {% block compress %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+      {% block extra_head %}
+
+
+      {% endblock %}
+        {% endblock %}
+  </body>
+</html>
