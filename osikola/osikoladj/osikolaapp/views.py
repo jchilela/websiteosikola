@@ -197,3 +197,9 @@ def loginProfessores(request):
 		a=2
 	return  render(request, template)	  
 
+
+#--------------------------------LANCAMENTO DE NOTAS -------------------------------------------
+
+def editarNotas(request):
+        template='editarNotas.html'
+        return render(request,template)
