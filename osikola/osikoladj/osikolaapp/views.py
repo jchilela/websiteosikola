@@ -199,7 +199,31 @@ def loginProfessores(request):
 
 
 #--------------------------------LANCAMENTO DE NOTAS -------------------------------------------
+def carregarTurmasProfessor(valor):
+        query = connection.cursor()
+        query.execute("select distinct(tblTurma.Turma), tblFuncionario.Nome, tblEspecialidade.Especialidade,tblClasse.Classe,tblTurma.Sala,tblTurma.CodAnoLectivo, tblPeriodo.Periodo,t1.CodProfessor,tblDisciplina.Disciplina  FROM tblTurma  WITH (NOLOCK)  JOIN tblEspecialidade ON tblTurma.CodCurso=tblEspecialidade.CodEspecialidade JOIN tblPeriodo ON tblTurma.CodPeriodo=tblPeriodo.CodPeriodo JOIN tblClasse ON tblTurma.CodClasse=tblClasse.CodClasse right JOIN tblDisciplinaCursoProfessor t1 ON tblTurma.CodClasse=t1.CodClasse right join tblDisciplinaCursoProfessor t2 on tblTurma.CodCurso=t2.CodCurso inner join tblDisciplina on tblDisciplina.CoDisciplina = t1.CodDisciplina inner join tblFuncionario on tblFuncionario.CodFuncionario = t1.CodProfessor where t1.CodProfessor = '%s' Group by tblTurma.Turma,tblFuncionario.Nome, tblEspecialidade.Especialidade,tblClasse.Classe,tblTurma.Sala,tblTurma.CodAnoLectivo, tblPeriodo.Periodo,t1.CodProfessor,tblDisciplina.Disciplina " %valor);
+        return dictfetchall(query)
+
+def carregarDisciplinasProfessor(valor):
+        query = connection.cursor()
+        query.execute("select distinct tblDisciplina.Disciplina, tblTurma.Turma, tblFuncionario.Nome FROM tblDisciplinaCursoProfessor  Left JOIN tblDisciplina ON tblDisciplina.CoDisciplina=tblDisciplinaCursoProfessor.CodDisciplina left JOIN tblFuncionario ON tblDisciplinaCursoProfessor.CodProfessor=tblFuncionario.CodFuncionario left Join tblTurma on tblDisciplinaCursoProfessor.CodCurso=tblTurma.CodCurso where tblDisciplinaCursoProfessor.CodProfessor = '%s' order by tblDisciplina.Disciplina " %valor);
+        return dictfetchall(query)
+
 
 def editarNotas(request):
+        valor = request.session['id_user']
+        resultado = carregarTurmasProfessor(valor)
+        disciplinas= carregarDisciplinasProfessor(valor)
+        todasDisciplinas = []
+        #print 'disc----ipli----',disciplinas[1]['Disciplina']
+       # print 'vector----', len(disciplinas)
+        todasDisciplinas.append(disciplinas[1]['Disciplina'])
+        for i in range(len(disciplinas)):
+                disciplinat = disciplinas[i]['Disciplina']
+                if disciplinat != disciplinas[i]['Disciplina']:
+                        todasDisciplinas.append(disciplinat)
+                        print 'todas disci--------',todasDisciplinas
+
+
         template='editarNotas.html'
-        return render(request,template)
+        return render(request,template,{'resultado':resultado,'disciplinas':disciplinas})

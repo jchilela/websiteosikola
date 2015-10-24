@@ -85,7 +85,7 @@ DATABASES = {
         'PASSWORD': 'avomingaosikola',
     }
 }
-TEMPLATE_DIRS = ('C:/websites/osikola/osikoladj/osikolaapp/templates',)
+TEMPLATE_DIRS = ('C:/Users/Julio G. Chilela/Documents/GitHub/websiteosikola/osikola/osikoladj/osikolaapp/templates',)
 
 
 STATIC_URL = '/static/'
